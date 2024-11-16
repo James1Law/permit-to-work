@@ -420,15 +420,29 @@ label {
 
 /* Company logo styles */
 .company-logo {
-    max-height: 60px; /* Adjust this value to make logo smaller/larger */
+    max-height: 40px; /* Smaller default size */
+    max-width: 150px; /* Add maximum width constraint */
     width: auto;
+    height: auto;
     display: block;
-    margin: 1rem auto; /* Centers the logo */
+    margin: 0.5rem auto; /* Reduced margin */
+    object-fit: contain; /* Ensures image maintains aspect ratio */
 }
 
-/* Mobile optimization for logo */
+/* iOS specific adjustments */
+@supports (-webkit-touch-callout: none) {
+    /* iOS only */
+    .company-logo {
+        max-height: 30px; /* Even smaller for iOS */
+        max-width: 120px;
+    }
+}
+
+/* Mobile optimization */
 @media screen and (max-width: 768px) {
     .company-logo {
-        max-height: 40px; /* Even smaller on mobile */
+        max-height: 30px;
+        max-width: 100px;
+        margin: 0.25rem auto; /* Further reduced margin on mobile */
     }
 }
