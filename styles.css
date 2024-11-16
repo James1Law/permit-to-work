@@ -156,25 +156,29 @@ textarea {
 /* Signature styles */
 .signatures-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
     gap: 2rem;
     margin-top: 1rem;
 }
 
 .signature-box {
     border: 1px solid #ddd;
-    padding: 1rem;
-    border-radius: 4px;
+    padding: 1.5rem;
+    border-radius: 8px;
     background: #fff;
-    margin-bottom: 1rem;
+}
+
+.signature-container {
+    position: relative;
+    border: 2px dashed #ccc;
+    border-radius: 4px;
+    margin: 1rem 0;
+    background: #f9f9f9;
 }
 
 .signature-pad {
     width: 100%;
-    height: 150px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin: 1rem 0;
+    height: 200px;
     touch-action: none;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -182,21 +186,50 @@ textarea {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #fff;
+    background-color: transparent;
+}
+
+.signature-instructions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #999;
+    font-size: 0.9rem;
+    pointer-events: none;
 }
 
 .clear-signature {
     background: #e74c3c;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1.2rem;
     border-radius: 4px;
     cursor: pointer;
-    margin-bottom: 1rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
 }
 
 .clear-signature:hover {
     background: #c0392b;
+}
+
+.signature-details {
+    margin-top: 1rem;
+    display: grid;
+    gap: 1rem;
+}
+
+/* Mobile optimization */
+@media screen and (max-width: 768px) {
+    .signature-pad {
+        height: 150px;
+    }
+    
+    .signature-box {
+        padding: 1rem;
+    }
 }
 
 /* Toast notifications */
@@ -235,7 +268,7 @@ textarea {
     color: white;
 }
 
-/* Mobile optimization */
+/* Mobile adjustments */
 @media screen and (max-width: 768px) {
     .container {
         margin: 0.5rem auto;

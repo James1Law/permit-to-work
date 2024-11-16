@@ -263,11 +263,14 @@
 
             <!-- Authorizations -->
             <section class="checklist-section">
-                <h2>Authorizations</h2>
+                <h2>Authorisations</h2>
                 <div class="signatures-grid">
                     <div class="signature-box">
                         <h3>Permit Issuer</h3>
-                        <canvas class="signature-pad" id="issuerSignature"></canvas>
+                        <div class="signature-container">
+                            <canvas class="signature-pad" id="issuerSignature"></canvas>
+                            <div class="signature-instructions">Touch here to sign</div>
+                        </div>
                         <button type="button" class="clear-signature" data-pad="issuerSignature">Clear</button>
                         <div class="signature-details">
                             <input type="text" placeholder="Name" required>
