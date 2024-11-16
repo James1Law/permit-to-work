@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enclosed Space Entry Permit to Work</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-header">
+            <div class="company-info">
+                <img src="company-logo.png" alt="Company Logo" class="company-logo">
+                <h1>Enclosed Space Entry Permit to Work</h1>
+            </div>
+            <div class="permit-status">
+                <span class="status-badge">DRAFT</span>
+                <span class="permit-validity">Valid for 24 hours from approval</span>
+            </div>
+        </div>
+        
+        <form id="permitForm">
+            <!-- Responsible Person Details -->
+            <section class="checklist-section">
+                <h2>Permit Details</h2>
+                <div class="permit-details">
+                    <div class="form-group">
+                        <label for="permitDate">Date:</label>
+                        <input type="date" id="permitDate" name="permitDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="permitNumber">Permit Number:</label>
+                        <input type="text" id="permitNumber" name="permitNumber" required>
+                    </div>
+                </div>
+                
+                <div class="responsible-person">
+                    <h3>Responsible Person</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="respName">Full Name:</label>
+                            <input type="text" id="respName" name="respName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="respPosition">Position:</label>
+                            <input type="text" id="respPosition" name="respPosition" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="respContact">Contact Number:</label>
+                            <input type="tel" id="respContact" name="respContact" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="respCompany">Company:</label>
+                            <input type="text" id="respCompany" name="respCompany" required>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section I: Pre-Entry Checks -->
+            <section class="checklist-section">
+                <h2>I. Pre-Entry Checks & Procedures</h2>
+                
+                <!-- Hazard Identification -->
+                <div class="checklist-group">
+                    <h3>Hazard Identification</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="hazardAssessment" required>
+                        <label for="hazardAssessment">Hazard assessment completed</label>
+                        <textarea placeholder="Document identified hazards..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Atmospheric Testing -->
+                <div class="checklist-group">
+                    <h3>Atmospheric Testing</h3>
+                    <div class="test-results">
+                        <div class="test-item">
+                            <label for="oxygenLevel">Oxygen Level (%):</label>
+                            <input type="number" id="oxygenLevel" required step="0.1">
+                        </div>
+                        <div class="test-item">
+                            <label for="flammableGases">Flammable Gases (% LEL):</label>
+                            <input type="number" id="flammableGases" required step="0.1">
+                        </div>
+                        <div class="test-item">
+                            <label for="toxicGases">Toxic Gases (ppm):</label>
+                            <input type="number" id="toxicGases" required step="0.1">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add photo evidence section -->
+                <div class="photo-evidence">
+                    <h3>Photo Evidence</h3>
+                    <div class="photo-upload">
+                        <input type="file" 
+                               id="photo-pre-entry" 
+                               class="photo-input" 
+                               accept="image/*" 
+                               capture="environment"
+                               multiple>
+                        <label for="photo-pre-entry" class="photo-label">
+                            <i class="camera-icon">📸</i>
+                            <span>Take/Upload Photos</span>
+                        </label>
+                        <div class="photo-preview" id="preview-pre-entry"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section II: During Entry Checks -->
+            <section class="checklist-section">
+                <h2>II. During Entry Checks</h2>
+                
+                <!-- Continuous Monitoring -->
+                <div class="checklist-group">
+                    <h3>Continuous Monitoring</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="continuousMonitoring" required>
+                        <label for="continuousMonitoring">Continuous atmospheric monitoring in place</label>
+                        <textarea placeholder="Record monitoring results and observations..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Communication Checks -->
+                <div class="checklist-group">
+                    <h3>Communication Checks</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="communicationSystem" required>
+                        <label for="communicationSystem">Communication system functioning</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="regularChecks" required>
+                        <label for="regularChecks">Regular communication checks performed</label>
+                        <textarea placeholder="Record communication check times and results..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Incident Reporting -->
+                <div class="checklist-group">
+                    <h3>Incident Reporting</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="incidentReporting">
+                        <label for="incidentReporting">Any incidents or near misses to report?</label>
+                        <textarea placeholder="Document any incidents, near misses, or deviations from planned procedures..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Add photo evidence section -->
+                <div class="photo-evidence">
+                    <h3>Photo Evidence</h3>
+                    <div class="photo-upload">
+                        <input type="file" 
+                               id="photo-during-entry" 
+                               class="photo-input" 
+                               accept="image/*" 
+                               capture="environment"
+                               multiple>
+                        <label for="photo-during-entry" class="photo-label">
+                            <i class="camera-icon">📸</i>
+                            <span>Take/Upload Photos</span>
+                        </label>
+                        <div class="photo-preview" id="preview-during-entry"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section III: Post-Entry Checks -->
+            <section class="checklist-section">
+                <h2>III. Post-Entry Checks & Procedures</h2>
+                
+                <!-- Safe Exit -->
+                <div class="checklist-group">
+                    <h3>Safe Exit</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="exitMonitoring" required>
+                        <label for="exitMonitoring">Final atmospheric monitoring completed</label>
+                        <div class="test-results">
+                            <div class="test-item">
+                                <label for="finalOxygenLevel">Final Oxygen Level (%):</label>
+                                <input type="number" id="finalOxygenLevel" required step="0.1">
+                            </div>
+                            <div class="test-item">
+                                <label for="finalFlammableGases">Final Flammable Gases (% LEL):</label>
+                                <input type="number" id="finalFlammableGases" required step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="personnelExit" required>
+                        <label for="personnelExit">All personnel safely exited the space</label>
+                    </div>
+                </div>
+
+                <!-- Equipment Inspection -->
+                <div class="checklist-group">
+                    <h3>Equipment Inspection & Clean Up</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="equipmentInspection" required>
+                        <label for="equipmentInspection">All equipment inspected and cleaned</label>
+                        <textarea placeholder="Note any equipment issues or maintenance required..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Post-Work Inspection -->
+                <div class="checklist-group">
+                    <h3>Post-Work Inspection</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="spaceInspection" required>
+                        <label for="spaceInspection">Enclosed space inspected and restored to safe condition</label>
+                        <textarea placeholder="Document final space condition and any concerns..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Permit Closure -->
+                <div class="checklist-group">
+                    <h3>Permit Closure</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="workComplete" required>
+                        <label for="workComplete">All work completed satisfactorily</label>
+                    </div>
+                    <div class="checklist-item">
+                        <label for="closureNotes">Closure Notes:</label>
+                        <textarea id="closureNotes" placeholder="Add any final observations or notes..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Add photo evidence section -->
+                <div class="photo-evidence">
+                    <h3>Photo Evidence</h3>
+                    <div class="photo-upload">
+                        <input type="file" 
+                               id="photo-post-entry" 
+                               class="photo-input" 
+                               accept="image/*" 
+                               capture="environment"
+                               multiple>
+                        <label for="photo-post-entry" class="photo-label">
+                            <i class="camera-icon">📸</i>
+                            <span>Take/Upload Photos</span>
+                        </label>
+                        <div class="photo-preview" id="preview-post-entry"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Time Controls -->
+            <div class="time-controls">
+                <div class="form-group">
+                    <label for="startTime">Start Time:</label>
+                    <input type="datetime-local" id="startTime" name="startTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="endTime">Expected End Time:</label>
+                    <input type="datetime-local" id="endTime" name="endTime" required>
+                </div>
+            </div>
+
+            <!-- Authorizations -->
+            <section class="checklist-section">
+                <h2>Authorisations</h2>
+                <div class="signatures-grid">
+                    <div class="signature-box">
+                        <h3>Permit Issuer</h3>
+                        <canvas class="signature-pad"></canvas>
+                        <button type="button" class="clear-signature">Clear</button>
+                        <div class="signature-details">
+                            <input type="text" placeholder="Name" required>
+                            <input type="datetime-local" required>
+                        </div>
+                    </div>
+                    <div class="signature-box">
+                        <h3>Permit Acceptor</h3>
+                        <canvas class="signature-pad"></canvas>
+                        <button type="button" class="clear-signature">Clear</button>
+                        <div class="signature-details">
+                            <input type="text" placeholder="Name" required>
+                            <input type="datetime-local" required>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Submit Permit</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
