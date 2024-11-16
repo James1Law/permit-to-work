@@ -74,6 +74,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Add pull-to-refresh functionality
+    let touchstartY = 0;
+    document.addEventListener('touchstart', e => {
+        touchstartY = e.touches[0].clientY;
+    });
+
+    document.addEventListener('touchmove', e => {
+        const touchY = e.touches[0].clientY;
+        const touchDiff = touchY - touchstartY;
+        
+        if (window.scrollY === 0 && touchDiff > 0) {
+            e.preventDefault();
+        }
+    });
 });
 
 // Add error class styles

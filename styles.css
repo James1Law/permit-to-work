@@ -140,67 +140,6 @@ label {
     background-color: #2980b9;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .container {
-        margin: 1rem auto;
-    }
-
-    .checklist-section {
-        padding: 1rem;
-    }
-
-    .test-results {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Permit Details Styles */
-.permit-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.responsible-person {
-    margin-top: 1rem;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.form-group input {
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .permit-details,
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* Photo upload styles */
 .photo-evidence {
     margin-top: 1.5rem;
@@ -315,69 +254,119 @@ label {
     color: white;
 }
 
-/* Animation for multiple toasts */
-.toast-container .toast:nth-child(n+2) {
-    margin-top: -100%;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .toast-container {
-        bottom: 0;
-        right: 0;
-        left: 0;
-        padding: 20px;
-    }
-    
-    .toast {
-        width: 100%;
-        text-align: center;
-    }
-}
-
-/* Company Header */
-.form-header {
-    display: flex;
-    justify-content: space-between;
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    bottom: env(safe-area-inset-bottom);
+    right: 1rem;
+    background: rgba(52, 152, 219, 0.9);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    display: none;
     align-items: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid #3498db;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
 }
 
-.company-logo {
-    height: 50px;
-    margin-right: 1rem;
+.back-to-top.visible {
+    display: flex;
 }
 
-.permit-status {
-    text-align: right;
+/* Mobile optimization */
+@media screen and (max-width: 768px) {
+    /* Container adjustments */
+    .container {
+        margin: 0.5rem;
+        padding: 0;
+    }
+
+    /* Header adjustments */
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    /* Section padding */
+    .checklist-section {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 4px;
+    }
+
+    /* Form elements */
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    input[type="datetime-local"],
+    textarea {
+        font-size: 16px;
+        padding: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Checkbox size and spacing */
+    .checklist-item {
+        padding: 0.8rem 0;
+    }
+
+    input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+        margin-right: 0.8rem;
+    }
+
+    /* Test results grid */
+    .test-results {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    /* Photo upload adjustments */
+    .photo-label {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .photo-preview {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    /* Submit button */
+    .submit-btn {
+        width: 100%;
+        max-width: none;
+        padding: 1rem;
+        margin: 1rem 0;
+        font-size: 1.1rem;
+    }
+
+    /* Toast notifications */
+    .toast-container {
+        bottom: env(safe-area-inset-bottom);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .toast {
+        margin: 0.5rem 1rem;
+        padding: 1rem;
+    }
 }
 
-.status-badge {
-    background-color: #f1c40f;
-    color: #000;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
-/* Emergency Contacts */
-.emergency-contacts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.contact-card {
-    background-color: #f8f9fa;
-    padding: 1rem;
-    border-radius: 4px;
-    border-left: 4px solid #3498db;
-}
-
-/* Signatures */
+/* Signature styles */
 .signatures-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -389,55 +378,42 @@ label {
     border: 1px solid #ddd;
     padding: 1rem;
     border-radius: 4px;
+    background: #fff;
 }
 
 .signature-pad {
     width: 100%;
     height: 150px;
     border: 1px solid #ccc;
+    border-radius: 4px;
     margin: 1rem 0;
+    cursor: crosshair;
+    touch-action: none; /* Important for touch devices */
 }
 
-/* Progress Bar */
-.progress-bar {
-    display: flex;
-    justify-content: space-between;
-    margin: 2rem 0;
-    position: relative;
-}
-
-.progress-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-}
-
-.step-number {
-    width: 30px;
-    height: 30px;
-    background-color: #fff;
-    border: 2px solid #3498db;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-}
-
-.progress-step.active .step-number {
-    background-color: #3498db;
+.clear-signature {
+    background: #e74c3c;
     color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1rem;
 }
 
-.progress-bar::before {
-    content: '';
-    position: absolute;
-    top: 15px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: #3498db;
-    z-index: 0;
+.clear-signature:hover {
+    background: #c0392b;
+}
+
+.signature-details {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.signature-details input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }

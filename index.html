@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon.png">
+    <meta name="description" content="Digital Permit to Work System for Enclosed Space Entry">
+    <meta name="keywords" content="permit to work, safety, enclosed space, digital form">
     <title>Enclosed Space Entry Permit to Work</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <div class="container">
         <div class="form-header">
             <div class="company-info">
-                <img src="company-logo.png" alt="Company Logo" class="company-logo">
+                <img src="./images/company-logo.png" alt="Company Logo" class="company-logo">
                 <h1>Enclosed Space Entry Permit to Work</h1>
             </div>
             <div class="permit-status">
@@ -259,12 +264,12 @@
 
             <!-- Authorizations -->
             <section class="checklist-section">
-                <h2>Authorisations</h2>
+                <h2>Authorizations</h2>
                 <div class="signatures-grid">
                     <div class="signature-box">
                         <h3>Permit Issuer</h3>
-                        <canvas class="signature-pad"></canvas>
-                        <button type="button" class="clear-signature">Clear</button>
+                        <canvas class="signature-pad" id="issuerSignature"></canvas>
+                        <button type="button" class="clear-signature" data-pad="issuerSignature">Clear</button>
                         <div class="signature-details">
                             <input type="text" placeholder="Name" required>
                             <input type="datetime-local" required>
@@ -272,8 +277,8 @@
                     </div>
                     <div class="signature-box">
                         <h3>Permit Acceptor</h3>
-                        <canvas class="signature-pad"></canvas>
-                        <button type="button" class="clear-signature">Clear</button>
+                        <canvas class="signature-pad" id="acceptorSignature"></canvas>
+                        <button type="button" class="clear-signature" data-pad="acceptorSignature">Clear</button>
                         <div class="signature-details">
                             <input type="text" placeholder="Name" required>
                             <input type="datetime-local" required>
@@ -287,6 +292,7 @@
         </form>
     </div>
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
+    <button id="backToTop" class="back-to-top">↑</button>
 </body>
 </html>
