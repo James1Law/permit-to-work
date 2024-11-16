@@ -418,3 +418,27 @@ button,
 .submit-btn {
     font-family: 'Lato', sans-serif;
 }
+
+/* Final test results styling */
+.test-results-final {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem 0;
+    padding-left: 2.5rem; /* Aligns with checkbox content */
+}
+
+.test-results-final .form-group {
+    margin-bottom: 0.5rem;
+}
+
+.test-results-final input[type="number"] {
+    max-width: 100%;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+    .test-results-final {
+        padding-left: 2rem;
+    }
+}

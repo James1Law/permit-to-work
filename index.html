@@ -182,20 +182,18 @@
                     <div class="checklist-item">
                         <input type="checkbox" id="exitMonitoring" required>
                         <label for="exitMonitoring">Final atmospheric monitoring completed</label>
-                        <div class="test-results">
-                            <div class="test-item">
-                                <label for="finalOxygenLevel">Final Oxygen Level (%):</label>
-                                <input type="number" id="finalOxygenLevel" required step="0.1">
-                            </div>
-                            <div class="test-item">
-                                <label for="finalFlammableGases">Final Flammable Gases (% LEL):</label>
-                                <input type="number" id="finalFlammableGases" required step="0.1">
-                            </div>
-                        </div>
                     </div>
-                    <div class="checklist-item">
-                        <input type="checkbox" id="personnelExit" required>
-                        <label for="personnelExit">All personnel safely exited the space</label>
+                    
+                    <!-- Updated test results structure -->
+                    <div class="test-results-final">
+                        <div class="form-group">
+                            <label for="finalOxygenLevel">Final Oxygen Level (%):</label>
+                            <input type="number" id="finalOxygenLevel" required step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="finalFlammableGases">Final Flammable Gases (% LEL):</label>
+                            <input type="number" id="finalFlammableGases" required step="0.1">
+                        </div>
                     </div>
                 </div>
 
