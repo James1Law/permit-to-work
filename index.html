@@ -115,6 +115,9 @@
                         <div class="photo-preview" id="preview-pre-entry"></div>
                     </div>
                 </div>
+                <button type="button" class="save-section-btn" data-section="pre-entry">
+                    Save Pre-Entry Checks
+                </button>
             </section>
 
             <!-- Section II: During Entry Checks -->
@@ -172,6 +175,9 @@
                         <div class="photo-preview" id="preview-during-entry"></div>
                     </div>
                 </div>
+                <button type="button" class="save-section-btn" data-section="during-entry">
+                    Save During Entry Checks
+                </button>
             </section>
 
             <!-- Section III: Post-Entry Checks -->
@@ -249,6 +255,9 @@
                         <div class="photo-preview" id="preview-post-entry"></div>
                     </div>
                 </div>
+                <button type="button" class="save-section-btn" data-section="post-entry">
+                    Save Post-Entry Checks
+                </button>
             </section>
 
             <!-- Time Controls -->
@@ -267,10 +276,11 @@
             <section class="checklist-section">
                 <h2>Authorisations</h2>
                 <div class="signatures-grid">
+                    <!-- Permit Issuer -->
                     <div class="signature-box">
                         <h3>Permit Issuer</h3>
                         <div class="signature-container">
-                            <canvas class="signature-pad" id="issuerSignature"></canvas>
+                            <canvas class="signature-pad" id="issuerSignature" width="600" height="200"></canvas>
                             <div class="signature-instructions">Touch here to sign</div>
                         </div>
                         <button type="button" class="clear-signature" data-pad="issuerSignature">Clear</button>
@@ -279,9 +289,14 @@
                             <input type="datetime-local" required>
                         </div>
                     </div>
+                    
+                    <!-- Permit Acceptor -->
                     <div class="signature-box">
                         <h3>Permit Acceptor</h3>
-                        <canvas class="signature-pad" id="acceptorSignature"></canvas>
+                        <div class="signature-container">
+                            <canvas class="signature-pad" id="acceptorSignature" width="600" height="200"></canvas>
+                            <div class="signature-instructions">Touch here to sign</div>
+                        </div>
                         <button type="button" class="clear-signature" data-pad="acceptorSignature">Clear</button>
                         <div class="signature-details">
                             <input type="text" placeholder="Name" required>
