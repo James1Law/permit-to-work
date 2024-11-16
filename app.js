@@ -129,119 +129,62 @@ class SignaturePad {
     constructor(canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
-        this.isDrawing = false;
-        this.points = [];
         
         // Set canvas size
-        this.resize();
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
         
-        // Set up drawing style
-        this.ctx.strokeStyle = '#000';
-        this.ctx.lineWidth = 2;
+        // Drawing settings
+        this.ctx.lineWidth = 3;
         this.ctx.lineCap = 'round';
-        this.ctx.lineJoin = 'round';
-
-        // Bind event handlers
-        this.handleStart = this.handleStart.bind(this);
-        this.handleMove = this.handleMove.bind(this);
-        this.handleEnd = this.handleEnd.bind(this);
+        this.ctx.strokeStyle = '#000000';
         
-        // Add event listeners
-        this.addEventListeners();
-    }
-    
-    resize() {
-        const rect = this.canvas.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
-        this.canvas.width = rect.width * dpr;
-        this.canvas.height = rect.height * dpr;
-        this.ctx.scale(dpr, dpr);
-        this.canvas.style.width = `${rect.width}px`;
-        this.canvas.style.height = `${rect.height}px`;
-    }
-    
-    addEventListeners() {
-        // Touch events
-        this.canvas.addEventListener('touchstart', this.handleStart, { passive: false });
-        this.canvas.addEventListener('touchmove', this.handleMove, { passive: false });
-        this.canvas.addEventListener('touchend', this.handleEnd, { passive: false });
-        
-        // Mouse events
-        this.canvas.addEventListener('mousedown', this.handleStart);
-        this.canvas.addEventListener('mousemove', this.handleMove);
-        this.canvas.addEventListener('mouseup', this.handleEnd);
-        this.canvas.addEventListener('mouseout', this.handleEnd);
-        
-        // Prevent scrolling while signing
-        this.canvas.addEventListener('touchmove', function(e) {
+        // Touch handling
+        this.canvas.addEventListener('touchstart', (e) => {
             e.preventDefault();
-        }, { passive: false });
-        
-        // Window resize
-        window.addEventListener('resize', () => {
-            this.resize();
-        });
-    }
-    
-    handleStart(event) {
-        event.preventDefault();
-        
-        const point = this.getPoint(event);
-        this.isDrawing = true;
-        this.points = [point];
-        
-        this.ctx.beginPath();
-        this.ctx.moveTo(point.x, point.y);
-        this.ctx.stroke();
-    }
-    
-    handleMove(event) {
-        if (!this.isDrawing) return;
-        event.preventDefault();
-        
-        const point = this.getPoint(event);
-        this.points.push(point);
-        
-        if (this.points.length > 2) {
-            const lastTwoPoints = this.points.slice(-2);
-            const controlPoint = lastTwoPoints[0];
-            const endPoint = {
-                x: (lastTwoPoints[1].x + controlPoint.x) / 2,
-                y: (lastTwoPoints[1].y + controlPoint.y) / 2,
-            };
-            
+            const touch = e.touches[0];
+            const rect = this.canvas.getBoundingClientRect();
             this.ctx.beginPath();
-            this.ctx.moveTo(this.points.slice(-2, -1)[0].x, this.points.slice(-2, -1)[0].y);
-            this.ctx.quadraticCurveTo(controlPoint.x, controlPoint.y, endPoint.x, endPoint.y);
+            this.ctx.moveTo(
+                touch.clientX - rect.left,
+                touch.clientY - rect.top
+            );
+        }, false);
+        
+        this.canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const rect = this.canvas.getBoundingClientRect();
+            this.ctx.lineTo(
+                touch.clientX - rect.left,
+                touch.clientY - rect.top
+            );
             this.ctx.stroke();
-            
-            this.ctx.beginPath();
-            this.ctx.moveTo(endPoint.x, endPoint.y);
-        }
-    }
-    
-    handleEnd(event) {
-        if (!this.isDrawing) return;
-        event.preventDefault();
-        this.isDrawing = false;
-        this.points = [];
-    }
-    
-    getPoint(event) {
-        const rect = this.canvas.getBoundingClientRect();
-        const point = event.touches ? event.touches[0] : event;
-        return {
-            x: (point.clientX - rect.left) * (this.canvas.width / rect.width),
-            y: (point.clientY - rect.top) * (this.canvas.height / rect.height)
-        };
+        }, false);
     }
     
     clear() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
-    
-    isEmpty() {
-        const pixels = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height).data;
-        return !pixels.some(pixel => pixel !== 0);
-    }
 }
+
+// Initialize when document loads
+document.addEventListener('DOMContentLoaded', () => {
+    const pads = {};
+    
+    // Initialize each signature pad
+    document.querySelectorAll('.signature-pad').forEach(canvas => {
+        pads[canvas.id] = new SignaturePad(canvas);
+    });
+    
+    // Setup clear buttons
+    document.querySelectorAll('.clear-signature').forEach(button => {
+        button.addEventListener('click', () => {
+            const padId = button.dataset.pad;
+            if (pads[padId]) {
+                pads[padId].clear();
+            }
+        });
+    });
+});
