@@ -91,13 +91,15 @@ textarea {
     padding: 0.8rem;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 16px; /* Prevents iOS zoom */
+    font-size: 16px;
     font-family: 'Lato', sans-serif;
     background-color: #fff;
     color: #333;
     margin-bottom: 0.5rem;
-    -webkit-appearance: none; /* Removes iOS default styling */
+    -webkit-appearance: none;
     appearance: none;
+    height: 44px;
+    box-sizing: border-box;
 }
 
 /* Checkbox styling */
@@ -135,6 +137,7 @@ label {
     margin-bottom: 0.5rem;
     color: #2c3e50;
     font-weight: 500;
+    font-family: 'Lato', sans-serif;
 }
 
 .checklist-item label {
@@ -146,6 +149,7 @@ label {
 /* Textarea specific */
 textarea {
     min-height: 100px;
+    height: auto;
     resize: vertical;
 }
 
@@ -269,7 +273,14 @@ textarea {
     input[type="datetime-local"],
     textarea {
         font-size: 16px;
+        height: 44px;
         padding: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    textarea {
+        min-height: 100px;
+        height: auto;
     }
 
     .signatures-grid {
@@ -292,7 +303,7 @@ textarea {
     }
 
     .form-group {
-        margin-bottom: 0.8rem;
+        margin-bottom: 1rem;
     }
 
     input[type="text"],
@@ -303,9 +314,10 @@ textarea {
     input[type="email"],
     select,
     textarea {
-        padding: 0.8rem;
         font-size: 16px;
-        margin-bottom: 0.4rem;
+        height: 44px;
+        padding: 0.8rem;
+        margin-bottom: 0.5rem;
     }
 
     .checklist-item {
@@ -336,20 +348,10 @@ textarea {
     input[type="email"],
     select,
     textarea {
-        font-size: 16px !important; /* Prevents zoom */
-        padding: 0.8rem !important;
-    }
-
-    /* Fix iOS date inputs */
-    input[type="date"],
-    input[type="datetime-local"] {
-        min-height: 44px;
-        line-height: 1;
-    }
-
-    /* Improve checkbox appearance on iOS */
-    input[type="checkbox"] {
-        border-width: 2px;
+        font-size: 16px !important;
+        height: 44px !important;
+        line-height: 44px !important;
+        padding: 0 0.8rem !important;
     }
 }
 
