@@ -14,8 +14,9 @@ body {
 
 .container {
     max-width: 1200px;
-    margin: 2rem auto;
+    margin: 1rem auto;
     padding: 0 1rem;
+    width: 100%;
 }
 
 /* Header styles */
@@ -281,8 +282,10 @@ label {
 @media screen and (max-width: 768px) {
     /* Container adjustments */
     .container {
-        margin: 0.5rem;
-        padding: 0;
+        margin: 0.5rem auto;
+        padding: 0 0.5rem;
+        width: 100%;
+        max-width: 100%;
     }
 
     /* Header adjustments */
@@ -364,6 +367,19 @@ label {
         margin: 0.5rem 1rem;
         padding: 1rem;
     }
+
+    /* Company logo adjustments */
+    .company-logo {
+        max-height: 25px !important;
+        max-width: 80px !important;
+    }
+
+    /* Ensure proper viewport scaling */
+    body {
+        width: 100%;
+        min-width: 320px;
+        overflow-x: hidden;
+    }
 }
 
 /* Signature styles */
@@ -420,13 +436,13 @@ label {
 
 /* Company logo styles */
 .company-logo {
-    max-height: 40px; /* Smaller default size */
+    max-height: 30px; /* Smaller default size */
     max-width: 150px; /* Add maximum width constraint */
-    width: auto;
-    height: auto;
+    width: auto !important; /* Force width auto */
+    height: auto !important; /* Force height auto */
     display: block;
-    margin: 0.5rem auto; /* Reduced margin */
-    object-fit: contain; /* Ensures image maintains aspect ratio */
+    margin: 0.5rem auto;
+    object-fit: contain;
 }
 
 /* iOS specific adjustments */
